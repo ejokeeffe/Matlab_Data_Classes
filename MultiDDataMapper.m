@@ -1,4 +1,5 @@
 %> @file MultiDDataMapper.m
+%>
 %> @brief Simple class for creating a hashtable. Or at least that was 
 %> the idea. An actual hashtable would just map any key to any value
 %> while i am create multi dimensional matrices with multiple keys
