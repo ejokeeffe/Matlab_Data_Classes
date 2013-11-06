@@ -570,7 +570,6 @@ classdef MultiDDataMapper < handle
                      obj.data(indxs,:)=[];
                      %Now remove from keystore
                      obj.keyStore(ii).keys(keyIndxs(2:end))=[];
-                     obj.indxStore(ii).indxs=[1:length(obj.keyStore(ii).keys)]';
                      %reduce cardinality
                      obj.cardinality(ii) = obj.cardinality(ii)-length(keyIndxs(2:end));
                  end %for jj
@@ -582,7 +581,7 @@ classdef MultiDDataMapper < handle
         function obj = normalizeAcrossValues(obj,valIndxs)
             %just normalize indexes that need normalizing
             indxs = find(sum(obj.data(:,valIndxs),2)>1);
-            obj.data(indxs,valIndxs) = bsxfun(@rdivide,obj.data(indxs,valIndxs),sum(obj.data(indxs,valIndxs),2));
+            obj.data(indxs,valIndxs) = bsxfun(@ldivide,obj.data(indxs,valIndxs),sum(obj.data(indxs,valIndxs),2));
             
             
         end 
